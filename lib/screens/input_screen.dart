@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:show_me_the_graph/components/data_check_list_item.dart';
 
 class InputScreen extends StatefulWidget {
-
   @override
   _InputScreenState createState() => _InputScreenState();
 }
