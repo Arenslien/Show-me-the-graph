@@ -9,7 +9,11 @@ class _InputScreenState extends State<InputScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      body: Center(
+        child: Column(
+          children: [Text("test")],
+        ),
+      ),
     );
   }
 }

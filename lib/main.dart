@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test/screens/home_screen.dart';
+import 'package:show_me_the_graph/screens/home_screen.dart';
 
 void main() {
   runApp(MyApp());
