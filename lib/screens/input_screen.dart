@@ -11,7 +11,7 @@ class _InputScreenState extends State<InputScreen> {
     return Scaffold(
       body: Center(
         child: Column(
-          children: [Text("test")],
+          children: [Text("아직 데이터가 없습니다. 추가해주세요.")],
         ),
       ),
     );
