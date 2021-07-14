@@ -4,7 +4,7 @@
 ## 코드 작업 시작하기 전에 꼭 프로젝트를 먼저 로컬 저장소에 가져가세요!!!!!!
 
 ## 프로젝트 가져오는 법!
-+ git checkout main
++ git checkout <자신이 사용하는 브랜치 명>
 + git pull origin main
 
 ### 프로젝트가 정상적으로 Pull(Fetch + Merge) 되었다면 branch를 바꿔주시고 작업해주세요!
