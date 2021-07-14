@@ -7,11 +7,22 @@ class InputScreen extends StatefulWidget {
 }
 
 class _InputScreenState extends State<InputScreen> {
+
+  // 체크 리스트 아이템 위젯 만드는 함수
+  List<CustomCheckListItem> createCheckItemList() {
+    List<CustomCheckListItem> list = [];
+    for (int i=1; i<=10; i++) {
+      list.add(CustomCheckListItem(number: i));
+    }
+    return list;
+  }
+
   @override
   Widget build(BuildContext context) {
     // 스마트폰 사이즈 가져오기
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+    int cardCount = 0;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -27,18 +38,7 @@ class _InputScreenState extends State<InputScreen> {
               ),
               Flexible(
                 child: ListView(
-                  children: [
-                    CustomCheckListItem(number: 1),
-                    CustomCheckListItem(number: 2),
-                    CustomCheckListItem(number: 3),
-                    CustomCheckListItem(number: 4),
-                    CustomCheckListItem(number: 5),
-                    CustomCheckListItem(number: 6),
-                    CustomCheckListItem(number: 7),
-                    CustomCheckListItem(number: 8),
-                    CustomCheckListItem(number: 9),
-                    CustomCheckListItem(number: 10),
-                  ],
+                  children: createCheckItemList(),
                 )
               ),
               ElevatedButton(
