@@ -1,12 +1,8 @@
 class UnnamedData {
-  int index = 0;
-  int maxIndex = 0;
-  List<String> name = [];
+  String name;
   Map<String, List<bool>> data = Map();
 
-  UnnamedData() {}
+  UnnamedData(this.name) {}
 
-  void addData(String newName, List<bool> newData) {
-    name.add(newName);
-  }
+  void addData(String newName, List<bool> newData) {}
 }
