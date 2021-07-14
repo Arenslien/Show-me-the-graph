@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:show_me_the_graph/screens/graph_all_screen.dart';
+import 'package:show_me_the_graph/source/data_source.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class GraphScreen extends StatefulWidget {
+  final GraphData data;
+
+  GraphScreen({Key? key, required this.data}) : super(key: key);
+
   @override
   _GraphScreenState createState() => _GraphScreenState();
 }
 
 class _GraphScreenState extends State<GraphScreen> {
-  String g_title = '명사 "엄마"';
   late List<ExpenseData> _chartData;
   late TooltipBehavior _tooltipBehavior;
 
   @override
   void initState() {
-    _chartData = getChartData();
+    _chartData = getChartData(widget.data.getCheckList());
     _tooltipBehavior = TooltipBehavior(enable: true);
 
     super.initState();
@@ -24,31 +27,11 @@ class _GraphScreenState extends State<GraphScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(g_title),
-        actions: <Widget>[
-          TextButton(
-              style: TextButton.styleFrom(
-                primary: Colors.black,
-                backgroundColor: Colors.red,
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => GraphAllScreen()),
-                );
-              },
-              child: Text(
-                "전체보기",
-                // style: TextStyle(
-                //   fontSize: 15,
-                //   color: Colors.white,
-                // ),
-              ))
-        ],
+        title: Text(widget.data.getTitle()),
       ),
       body: Center(
         child: SfCartesianChart(
-          title: ChartTitle(text: g_title),
+          title: ChartTitle(text: widget.data.getTitle()),
           legend: Legend(isVisible: true),
           tooltipBehavior: _tooltipBehavior,
           series: <ChartSeries>[
@@ -64,19 +47,12 @@ class _GraphScreenState extends State<GraphScreen> {
     );
   }
 
-  List<ExpenseData> getChartData() {
-    final List<ExpenseData> chartData = [
-      ExpenseData(1, 0),
-      ExpenseData(2, 0),
-      ExpenseData(3, 1),
-      ExpenseData(4, 1),
-      ExpenseData(5, 1),
-      ExpenseData(6, 1),
-      ExpenseData(7, 1),
-      ExpenseData(8, 0),
-      ExpenseData(9, 1),
-      ExpenseData(10, 1),
-    ];
+  List<ExpenseData> getChartData(List<bool> checkList) {
+    List<ExpenseData> chartData = [];
+    for(int i=0; i<10; i++) {
+      if (checkList[i]) chartData.add(ExpenseData(i+1, 1));
+      else chartData.add(ExpenseData(i+1, 0));
+    }
     return chartData;
   }
 }

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:show_me_the_graph/source/data_source.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class GraphAllScreen extends StatefulWidget {
+  final List<GraphData> allData;
+
+  GraphAllScreen({Key? key, required this.allData}) : super(key: key);
   @override
   _GraphAllScreenState createState() => _GraphAllScreenState();
 }
@@ -11,7 +15,7 @@ class _GraphAllScreenState extends State<GraphAllScreen> {
   late TooltipBehavior _tooltipBehavior;
   @override
   void initState() {
-    _chartData = getChartData();
+    _chartData = getChartData(widget.allData);
     _tooltipBehavior = TooltipBehavior(enable: true);
     super.initState();
   }
@@ -55,16 +59,21 @@ class _GraphAllScreenState extends State<GraphAllScreen> {
     );
   }
 
-  List<ExpenseData> getChartData() {
-    final List<ExpenseData> chartData = [
-      ExpenseData('명사 "엄마"', 9, 1),
-      ExpenseData('동사 "마셔"', 7, 3),
-      ExpenseData('말 따라하기 "손씻어"', 8, 2),
-      ExpenseData('세모 그리기', 3, 3),
-      ExpenseData('숟가락 사용', 0, 10),
-      ExpenseData('장난감 놀이', 6, 4),
-      ExpenseData('율동모방하기 "수박"', 8, 2),
-    ];
+  List<ExpenseData> getChartData(List<GraphData> allData) {
+    List<ExpenseData> chartData = [];
+    for(int i=0; i<allData.length; i++) {
+      chartData.add(ExpenseData(allData[i].getTitle(), allData[i].getTrueCount(), allData[i].getFalseCount()));
+    }
+
+    // 더미 테스트 데이터
+    // ExpenseData('명사 "엄마"', 9, 1),
+    // ExpenseData('동사 "마셔"', 7, 3),
+    // ExpenseData('말 따라하기 "손씻어"', 8, 2),
+    // ExpenseData('세모 그리기', 3, 3),
+    // ExpenseData('숟가락 사용', 0, 10),
+    // ExpenseData('장난감 놀이', 6, 4),
+    // ExpenseData('율동모방하기 "수박"', 8, 2),
+
     return chartData;
   }
 }
