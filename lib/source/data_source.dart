@@ -35,4 +35,8 @@ class GraphData {
   List<bool?> getListData() {
     return _allCount;
   }
+
+  double getPercentage() {
+    return _trueCount/(_trueCount + _falseCount) * 100;
+  }
 }

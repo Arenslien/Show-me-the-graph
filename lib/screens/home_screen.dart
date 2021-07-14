@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:show_me_the_graph/components/data_card.dart';
 import 'package:show_me_the_graph/screens/input_screen.dart';
 import 'package:show_me_the_graph/source/data_source.dart';
 
@@ -24,15 +25,13 @@ class _HomeScreenState extends State<HomeScreen> {
     allData = getAllDataFromDB();
   }
 
-  // 데이터가 없을 경우 데이터가 없다는 위젯을 생성하는 함수
-  void createNoDataCard() {
-    // 위젯 생성하는 logic
-
-  }
-
   // 데이터가 있을 경우 각각의 데이터 카드를 생성하는 함수
-  void createAllDataCard() {
-
+  List<DataCard> createAllDataCard(List<GraphData> dataList) {
+    List<DataCard> cardList = [];
+    for (var graphData in dataList) {
+      cardList.add(DataCard(graphData));
+    }
+    return cardList;
   }
 
 
@@ -43,46 +42,11 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text("Show Me The Graph"),
       ),
       body: Padding(
-        padding: EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(8.0),
         child: ListView(
-          children: allData.length == 0? [] : [],
+          children: allData.length == 0? [NoDataCard()] : createAllDataCard(allData)
         ),
       ),
-      // body: Center(
-      //   child: ListView.builder(
-      //     padding: const EdgeInsets.all(8),
-      //     itemCount: temp.length + 1,
-      //     itemBuilder: (BuildContext context, int index) {
-      //       if (index == 0) return NoDataCard();
-      //       return Column(
-      //         children: [
-      //           Container(
-      //             child: Column(
-      //               children: [
-      //                 Text(
-      //                   "data1",
-      //                   style: TextStyle(fontSize: 20),
-      //                 ),
-      //                 SizedBox(height: 10),
-      //                 Row(
-      //                   mainAxisAlignment:
-      //                       MainAxisAlignment.spaceEvenly,
-      //                   children: [Text("image1"), Text("image2")],
-      //                 ),
-      //                 SizedBox(height: 10),
-      //                 Text(
-      //                   "percentage",
-      //                   style: TextStyle(fontSize: 20),
-      //                 )
-      //               ],
-      //             ),
-      //             margin: EdgeInsets.all(30)
-      //           )
-      //         ],
-      //       );
-      //     }
-      //   ),
-      // ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
