@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 
 class CustomDropDownButton extends StatefulWidget {
-  const CustomDropDownButton({ Key? key }) : super(key: key);
-
   @override
   _CustomDropDownButtonState createState() => _CustomDropDownButtonState();
+
+  static _CustomDropDownButtonState? of(BuildContext context) => context.findAncestorStateOfType<_CustomDropDownButtonState>();
 }
 
 class _CustomDropDownButtonState extends State<CustomDropDownButton> {
+  // 체크 관련 함수
   String dropdownValue = '체크';
+
+  // checkValue값 가져오는 함수
+  bool getCheckValue() {
+    return dropdownValue == '체크';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +29,7 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
           dropdownValue = newValue!;
         });
       },
-      items: ["체크", "미체크"]
+      items: ['체크', '미체크']
           .map((value) {
             return DropdownMenuItem(
               value: value,

@@ -8,7 +8,7 @@ class GraphData {
   // ex) GraphData('명사 "엄마"', [0, 0, 1, 1, 1, 1, 1, 0, 1, 1])
   GraphData(this._title, this._allCount) {
     for (var value in this._allCount) {
-      if (value == 1) {
+      if (value == true) {
         _trueCount++;
       } else {
         _falseCount++;
