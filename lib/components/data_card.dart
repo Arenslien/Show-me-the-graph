@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:show_me_the_graph/screens/graph_screen.dart';
 import 'package:show_me_the_graph/source/data_source.dart';
 
 
@@ -31,7 +32,15 @@ class _DataCardState extends State<DataCard> {
           Text(
             widget.data.getPercentage().toString(),
             style: TextStyle(fontSize: 20),
-          )
+          ),
+          TextButton(
+            child: Text("Graph"),
+            onPressed: () {
+              Navigator.push(
+                context, MaterialPageRoute(builder: (context) => GraphScreen())
+                );
+              },
+            )
         ],
       ),
       margin: EdgeInsets.all(30)

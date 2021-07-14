@@ -13,7 +13,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // 데이터 베이스에서 모든 데이터를 가져오는 함수
   List<GraphData> getAllDataFromDB() {
-    List<GraphData> dataList = [];
+    List<GraphData> dataList = [GraphData("test", [true,true,true,true,true,true,true,true,true,true,])];
     // 가져오는 Logic
     return dataList;
   }
@@ -34,7 +34,6 @@ class _HomeScreenState extends State<HomeScreen> {
     }
     return cardList;
   }
-
 
   @override
   Widget build(BuildContext context) {
