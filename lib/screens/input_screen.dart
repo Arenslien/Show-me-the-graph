@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:show_me_the_graph/components/data_check_list_item.dart';
+import 'package:show_me_the_graph/source/data_source.dart';
 
 class InputScreen extends StatefulWidget {
   @override
@@ -7,14 +7,26 @@ class InputScreen extends StatefulWidget {
 }
 
 class _InputScreenState extends State<InputScreen> {
+  // 입력 데이터 관련 변수 선언
+  late String title;
+  List<bool> isChecked = [false, false, false, false, false, false, false, false, false, false];
 
-  // 체크 리스트 아이템 위젯 만드는 함수
-  List<CustomCheckListItem> createCheckItemList() {
-    List<CustomCheckListItem> list = [];
-    for (int i=1; i<=10; i++) {
-      list.add(CustomCheckListItem(number: i));
+  // Form 검증
+  bool validateForm() {
+    return title.isNotEmpty;
+  }
+
+  // 체크 박스 컬러 인터랙티브 관련 함수
+  Color getColor(Set<MaterialState> states) {
+    const Set<MaterialState> interactiveStates = <MaterialState>{
+      MaterialState.pressed,
+      MaterialState.hovered,
+      MaterialState.focused,
+    };
+    if (states.any(interactiveStates.contains)) {
+      return Colors.amber;
     }
-    return list;
+    return Colors.amber;
   }
 
   @override
@@ -22,7 +34,6 @@ class _InputScreenState extends State<InputScreen> {
     // 스마트폰 사이즈 가져오기
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    int cardCount = 0;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -30,24 +41,303 @@ class _InputScreenState extends State<InputScreen> {
         padding: EdgeInsets.all(20.0),
         child: Form(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               TextField(
                 decoration: InputDecoration(
-                  border: UnderlineInputBorder(), labelText: "제목"
-                  ),
+                  focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.amber)),
+                  labelText: "제목",
+                  labelStyle: TextStyle(color: Colors.black87),
+                ),
+                cursorColor: Colors.black87,
+                onChanged: (value) {
+                  setState(() {
+                    title = value;
+                  });
+                },
               ),
-              Flexible(
-                child: ListView(
-                  children: createCheckItemList(),
-                )
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    child: Column(
+                      children: [
+                        Text(
+                          '1',
+                          style: TextStyle(
+                            fontSize: 25.0,
+                            fontWeight: FontWeight.bold
+                          ),
+                        ),
+                        Transform.scale(
+                          scale: 2.5,
+                          child: Checkbox(
+                            checkColor: Colors.white,
+                            fillColor: MaterialStateProperty.resolveWith(getColor),
+                            value: isChecked[0], 
+                            onChanged: (bool? value) {
+                              setState(() {
+                                isChecked[0] = value!;
+                              });
+                            },
+                          ),
+                        ),
+                      ],
+                    )
+                  ),
+                  Container(
+                    child: Column(
+                      children: [
+                        Text(
+                          '2',
+                          style: TextStyle(
+                            fontSize: 25.0,
+                            fontWeight: FontWeight.bold
+                          ),
+                        ),
+                        Transform.scale(
+                          scale: 2.5,
+                          child: Checkbox(
+                            checkColor: Colors.white,
+                            fillColor: MaterialStateProperty.resolveWith(getColor),
+                            value: isChecked[1], 
+                            onChanged: (bool? value) {
+                              setState(() {
+                                isChecked[1] = value!;
+                              });
+                            },
+                          ),
+                        ),
+                      ],
+                    )
+                  ),
+                  Container(
+                    child: Column(
+                      children: [
+                        Text(
+                          '3',
+                          style: TextStyle(
+                            fontSize: 25.0,
+                            fontWeight: FontWeight.bold
+                          ),
+                        ),
+                        Transform.scale(
+                          scale: 2.5,
+                          child: Checkbox(
+                            checkColor: Colors.white,
+                            fillColor: MaterialStateProperty.resolveWith(getColor),
+                            value: isChecked[2], 
+                            onChanged: (bool? value) {
+                              setState(() {
+                                isChecked[2] = value!;
+                              });
+                            },
+                          ),
+                        ),
+                      ],
+                    )
+                  ),
+                  Container(
+                    child: Column(
+                      children: [
+                        Text(
+                          '4',
+                          style: TextStyle(
+                            fontSize: 25.0,
+                            fontWeight: FontWeight.bold
+                          ),
+                        ),
+                        Transform.scale(
+                          scale: 2.5,
+                          child: Checkbox(
+                            checkColor: Colors.white,
+                            fillColor: MaterialStateProperty.resolveWith(getColor),
+                            value: isChecked[3], 
+                            onChanged: (bool? value) {
+                              setState(() {
+                                isChecked[3] = value!;
+                              });
+                            },
+                          ),
+                        ),
+                      ],
+                    )
+                  ),
+                  Container(
+                    child: Column(
+                      children: [
+                        Text(
+                          '5',
+                          style: TextStyle(
+                            fontSize: 25.0,
+                            fontWeight: FontWeight.bold
+                          ),
+                        ),
+                        Transform.scale(
+                          scale: 2.5,
+                          child: Checkbox(
+                            checkColor: Colors.white,
+                            fillColor: MaterialStateProperty.resolveWith(getColor),
+                            value: isChecked[4], 
+                            onChanged: (bool? value) {
+                              setState(() {
+                                isChecked[4] = value!;
+                              });
+                            },
+                          ),
+                        ),
+                      ],
+                    )
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    child: Column(
+                      children: [
+                        Text(
+                          '6',
+                          style: TextStyle(
+                            fontSize: 25.0,
+                            fontWeight: FontWeight.bold
+                          ),
+                        ),
+                        Transform.scale(
+                          scale: 2.5,
+                          child: Checkbox(
+                            checkColor: Colors.white,
+                            fillColor: MaterialStateProperty.resolveWith(getColor),
+                            value: isChecked[5], 
+                            onChanged: (bool? value) {
+                              setState(() {
+                                isChecked[5] = value!;
+                              });
+                            },
+                          ),
+                        ),
+                      ],
+                    )
+                  ),
+                  Container(
+                    child: Column(
+                      children: [
+                        Text(
+                          '7',
+                          style: TextStyle(
+                            fontSize: 25.0,
+                            fontWeight: FontWeight.bold
+                          ),
+                        ),
+                        Transform.scale(
+                          scale: 2.5,
+                          child: Checkbox(
+                            checkColor: Colors.white,
+                            fillColor: MaterialStateProperty.resolveWith(getColor),
+                            value: isChecked[6], 
+                            onChanged: (bool? value) {
+                              setState(() {
+                                isChecked[6] = value!;
+                              });
+                            },
+                          ),
+                        ),
+                      ],
+                    )
+                  ),
+                  Container(
+                    child: Column(
+                      children: [
+                        Text(
+                          '8',
+                          style: TextStyle(
+                            fontSize: 25.0,
+                            fontWeight: FontWeight.bold
+                          ),
+                        ),
+                        Transform.scale(
+                          scale: 2.5,
+                          child: Checkbox(
+                            checkColor: Colors.white,
+                            fillColor: MaterialStateProperty.resolveWith(getColor),
+                            value: isChecked[7], 
+                            onChanged: (bool? value) {
+                              setState(() {
+                                isChecked[7] = value!;
+                              });
+                            },
+                          ),
+                        ),
+                      ],
+                    )
+                  ),
+                  Container(
+                    child: Column(
+                      children: [
+                        Text(
+                          '9',
+                          style: TextStyle(
+                            fontSize: 25.0,
+                            fontWeight: FontWeight.bold
+                          ),
+                        ),
+                        Transform.scale(
+                          scale: 2.5,
+                          child: Checkbox(
+                            checkColor: Colors.white,
+                            fillColor: MaterialStateProperty.resolveWith(getColor),
+                            value: isChecked[8], 
+                            onChanged: (bool? value) {
+                              setState(() {
+                                isChecked[8] = value!;
+                              });
+                            },
+                          ),
+                        ),
+                      ],
+                    )
+                  ),
+                  Container(
+                    child: Column(
+                      children: [
+                        Text(
+                          '10',
+                          style: TextStyle(
+                            fontSize: 25.0,
+                            fontWeight: FontWeight.bold
+                          ),
+                        ),
+                        Transform.scale(
+                          scale: 2.5,
+                          child: Checkbox(
+                            checkColor: Colors.white,
+                            fillColor: MaterialStateProperty.resolveWith(getColor),
+                            value: isChecked[9], 
+                            onChanged: (bool? value) {
+                              setState(() {
+                                isChecked[9] = value!;
+                              });
+                            },
+                          ),
+                        ),
+                      ],
+                    )
+                  ),
+                ],
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pop(context);
+                  if (validateForm()) {
+                    print(isChecked);
+                    Navigator.pop(context, GraphData(title, isChecked));
+                  };
                 },
                 child: Text("제출",
                   style: TextStyle(
-                    color: Colors.black87, fontWeight: FontWeight.bold
+                    color: Colors.black87,
+                    fontSize: 25.0,
+                    fontWeight: FontWeight.bold
                   )
                 ),
                 style: ElevatedButton.styleFrom(

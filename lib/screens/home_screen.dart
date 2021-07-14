@@ -22,7 +22,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    allData = getAllDataFromDB();
+    // allData = getAllDataFromDB();
+    allData = [GraphData("test", [true, true, false, true, true, false, true, true, true, true])];
   }
 
   // 데이터가 있을 경우 각각의 데이터 카드를 생성하는 함수
@@ -48,13 +49,17 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
+        onPressed: () async {
+          final result = await Navigator.push(
             context, MaterialPageRoute(builder: (context) => InputScreen())
           );
+          setState(() {
+            allData.add(result);
+          });
         },
         tooltip: 'Increment',
-        child: Icon(Icons.add),
+        child: Icon(Icons.add, color: Colors.black87, size: 35.0),
+        backgroundColor: Colors.amber,
       ),
     );
   }
