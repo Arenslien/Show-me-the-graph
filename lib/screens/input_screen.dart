@@ -22,9 +22,8 @@ class _InputScreenState extends State<InputScreen> {
             children: [
               TextField(
                 decoration: InputDecoration(
-                  border: UnderlineInputBorder(),
-                  labelText: "제목"
-                ),
+                  border: UnderlineInputBorder(), labelText: "제목"
+                  ),
               ),
               Flexible(
                 child: ListView(
@@ -46,7 +45,11 @@ class _InputScreenState extends State<InputScreen> {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text("제출", style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold)),
+                child: Text("제출",
+                  style: TextStyle(
+                    color: Colors.black87, fontWeight: FontWeight.bold
+                  )
+                ),
                 style: ElevatedButton.styleFrom(
                   primary: Colors.amber,
                   minimumSize: Size(width * 0.9, 40.0),
