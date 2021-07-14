@@ -48,6 +48,41 @@ class _HomeScreenState extends State<HomeScreen> {
           children: allData.length == 0? [] : [],
         ),
       ),
+      // body: Center(
+      //   child: ListView.builder(
+      //     padding: const EdgeInsets.all(8),
+      //     itemCount: temp.length + 1,
+      //     itemBuilder: (BuildContext context, int index) {
+      //       if (index == 0) return NoDataCard();
+      //       return Column(
+      //         children: [
+      //           Container(
+      //             child: Column(
+      //               children: [
+      //                 Text(
+      //                   "data1",
+      //                   style: TextStyle(fontSize: 20),
+      //                 ),
+      //                 SizedBox(height: 10),
+      //                 Row(
+      //                   mainAxisAlignment:
+      //                       MainAxisAlignment.spaceEvenly,
+      //                   children: [Text("image1"), Text("image2")],
+      //                 ),
+      //                 SizedBox(height: 10),
+      //                 Text(
+      //                   "percentage",
+      //                   style: TextStyle(fontSize: 20),
+      //                 )
+      //               ],
+      //             ),
+      //             margin: EdgeInsets.all(30)
+      //           )
+      //         ],
+      //       );
+      //     }
+      //   ),
+      // ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
