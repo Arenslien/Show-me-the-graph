@@ -14,12 +14,6 @@ class DataCard extends StatefulWidget {
 class _DataCardState extends State<DataCard> {
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
-    return ListTile(
-      leading: Icon(Icons.person),
-      title: Text(widget._temp.name),
-      subtitle: Text("test")
-=======
     return Container(
       child: Column(
         children: [
@@ -41,7 +35,6 @@ class _DataCardState extends State<DataCard> {
         ],
       ),
       margin: EdgeInsets.all(30)
->>>>>>> 3857436674ea260c3ca320e5252ade1b1a66fc0d
     );
   }
 }
