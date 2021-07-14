@@ -34,8 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       SizedBox(height: 10),
                       Row(
-                        mainAxisAlignment:
-                            MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [Text("image1"), Text("image2")],
                       ),
                       SizedBox(height: 10),

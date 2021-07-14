@@ -14,9 +14,10 @@ class _DataCaeState extends State<DataCard> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-        leading: Icon(Icons.person),
-        title: Text(widget._temp.name),
-        subtitle: Text("test"));
+      leading: Icon(Icons.person),
+      title: Text(widget._temp.name),
+      subtitle: Text("test")
+    );
   }
 }
 
