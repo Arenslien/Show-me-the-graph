@@ -32,7 +32,7 @@ class GraphData {
   }
 
   // allCount를 return 하는 함수
-  List<bool?> getListData() {
+  List<bool> getCheckList() {
     return _allCount;
   }
 

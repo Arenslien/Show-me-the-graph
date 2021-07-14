@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:show_me_the_graph/screens/graph_all_screen.dart';
 import 'package:show_me_the_graph/source/data_source.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -18,7 +17,7 @@ class _GraphScreenState extends State<GraphScreen> {
 
   @override
   void initState() {
-    _chartData = getChartData();
+    _chartData = getChartData(widget.data.getCheckList());
     _tooltipBehavior = TooltipBehavior(enable: true);
 
     super.initState();
@@ -29,26 +28,6 @@ class _GraphScreenState extends State<GraphScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.data.getTitle()),
-        actions: <Widget>[
-          TextButton(
-              style: TextButton.styleFrom(
-                primary: Colors.black,
-                backgroundColor: Colors.red,
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => GraphAllScreen()),
-                );
-              },
-              child: Text(
-                "전체보기",
-                // style: TextStyle(
-                //   fontSize: 15,
-                //   color: Colors.white,
-                // ),
-              ))
-        ],
       ),
       body: Center(
         child: SfCartesianChart(
@@ -68,19 +47,12 @@ class _GraphScreenState extends State<GraphScreen> {
     );
   }
 
-  List<ExpenseData> getChartData() {
-    final List<ExpenseData> chartData = [
-      ExpenseData(1, 0),
-      ExpenseData(2, 0),
-      ExpenseData(3, 1),
-      ExpenseData(4, 1),
-      ExpenseData(5, 1),
-      ExpenseData(6, 1),
-      ExpenseData(7, 1),
-      ExpenseData(8, 0),
-      ExpenseData(9, 1),
-      ExpenseData(10, 1),
-    ];
+  List<ExpenseData> getChartData(List<bool> checkList) {
+    List<ExpenseData> chartData = [];
+    for(int i=0; i<10; i++) {
+      if (checkList[i]) chartData.add(ExpenseData(i+1, 1));
+      else chartData.add(ExpenseData(i+1, 0));
+    }
     return chartData;
   }
 }

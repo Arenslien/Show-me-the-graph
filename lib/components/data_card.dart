@@ -37,7 +37,7 @@ class _DataCardState extends State<DataCard> {
             child: Text("Graph"),
             onPressed: () {
               Navigator.push(
-                context, MaterialPageRoute(builder: (context) => GraphScreen())
+                context, MaterialPageRoute(builder: (context) => GraphScreen(data: widget.data))
                 );
               },
             )

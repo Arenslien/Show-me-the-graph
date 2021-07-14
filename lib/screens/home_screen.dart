@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:show_me_the_graph/components/data_card.dart';
+import 'package:show_me_the_graph/screens/graph_all_screen.dart';
 import 'package:show_me_the_graph/screens/input_screen.dart';
 import 'package:show_me_the_graph/source/data_source.dart';
 
@@ -13,7 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // 데이터 베이스에서 모든 데이터를 가져오는 함수
   List<GraphData> getAllDataFromDB() {
-    List<GraphData> dataList = [GraphData("test", [true,true,true,true,true,true,true,true,true,true,])];
+    List<GraphData> dataList = [];
     // 가져오는 Logic
     return dataList;
   }
@@ -39,6 +40,26 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Show Me The Graph"),
+        actions: <Widget>[
+          TextButton(
+              style: TextButton.styleFrom(
+                primary: Colors.black,
+                backgroundColor: Colors.red,
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => GraphAllScreen(allData: allData)),
+                );
+              },
+              child: Text(
+                "전체보기",
+                // style: TextStyle(
+                //   fontSize: 15,
+                //   color: Colors.white,
+                // ),
+              ))
+        ],
       ),
       body: Padding(
         padding: EdgeInsets.all(8.0),
@@ -51,9 +72,11 @@ class _HomeScreenState extends State<HomeScreen> {
           final result = await Navigator.push(
             context, MaterialPageRoute(builder: (context) => InputScreen())
           );
-          setState(() {
-            allData.add(result);
-          });
+          if (result != null) {
+            setState(() {
+              allData.add(result);
+            });
+          }
         },
         tooltip: 'Increment',
         child: Icon(Icons.add, color: Colors.black87, size: 35.0),
