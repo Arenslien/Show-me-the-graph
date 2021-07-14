@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:show_me_the_graph/screens/graph_all_screen.dart';
+import 'package:show_me_the_graph/source/data_source.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class GraphScreen extends StatefulWidget {
+  final GraphData data;
+
+  GraphScreen({Key? key, required this.data}) : super(key: key);
+
   @override
   _GraphScreenState createState() => _GraphScreenState();
 }
 
 class _GraphScreenState extends State<GraphScreen> {
-  String g_title = '명사 "엄마"';
   late List<ExpenseData> _chartData;
   late TooltipBehavior _tooltipBehavior;
 
@@ -24,7 +28,7 @@ class _GraphScreenState extends State<GraphScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(g_title),
+        title: Text(widget.data.getTitle()),
         actions: <Widget>[
           TextButton(
               style: TextButton.styleFrom(
@@ -48,7 +52,7 @@ class _GraphScreenState extends State<GraphScreen> {
       ),
       body: Center(
         child: SfCartesianChart(
-          title: ChartTitle(text: g_title),
+          title: ChartTitle(text: widget.data.getTitle()),
           legend: Legend(isVisible: true),
           tooltipBehavior: _tooltipBehavior,
           series: <ChartSeries>[

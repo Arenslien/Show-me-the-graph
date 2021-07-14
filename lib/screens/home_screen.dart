@@ -22,8 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    // allData = getAllDataFromDB();
-    allData = [GraphData("test", [true, true, false, true, true, false, true, true, true, true])];
+    allData = getAllDataFromDB();
   }
 
   // 데이터가 있을 경우 각각의 데이터 카드를 생성하는 함수
