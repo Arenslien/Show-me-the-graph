@@ -42,23 +42,24 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text("Show Me The Graph"),
         actions: <Widget>[
           TextButton(
-              style: TextButton.styleFrom(
-                primary: Colors.black,
-                backgroundColor: Colors.red,
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => GraphAllScreen(allData: allData)),
-                );
-              },
-              child: Text(
-                "전체보기",
-                // style: TextStyle(
-                //   fontSize: 15,
-                //   color: Colors.white,
-                // ),
-              ))
+            style: TextButton.styleFrom(
+              primary: Colors.black,
+              backgroundColor: Colors.red,
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => GraphAllScreen(allData: allData)),
+              );
+            },
+            child: Text(
+              "전체보기",
+              // style: TextStyle(
+              //   fontSize: 15,
+              //   color: Colors.white,
+              // ),
+            )
+          )
         ],
       ),
       body: Padding(

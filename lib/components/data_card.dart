@@ -24,8 +24,7 @@ class _DataCardState extends State<DataCard> {
           ),
           SizedBox(height: 10),
           Row(
-            mainAxisAlignment:
-                MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [Text("image1"), Text("image2")],
           ),
           SizedBox(height: 10),
@@ -38,9 +37,9 @@ class _DataCardState extends State<DataCard> {
             onPressed: () {
               Navigator.push(
                 context, MaterialPageRoute(builder: (context) => GraphScreen(data: widget.data))
-                );
-              },
-            )
+              );
+            },
+          )
         ],
       ),
       margin: EdgeInsets.all(30)
@@ -61,10 +60,11 @@ class _NoDataCardState extends State<NoDataCard> {
         children: [
           Text(
             "아직 데이터가 없습니다. 추가해주세요.",
-            style: TextStyle(fontSize: 20),
+            style: TextStyle(fontSize: 18),
           ),
         ],
       ),
+      margin: EdgeInsets.all(30),
     );
   }
 }
