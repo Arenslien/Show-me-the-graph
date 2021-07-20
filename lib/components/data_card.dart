@@ -60,10 +60,11 @@ class _NoDataCardState extends State<NoDataCard> {
         children: [
           Text(
             "아직 데이터가 없습니다. 추가해주세요.",
-            style: TextStyle(fontSize: 20),
+            style: TextStyle(fontSize: 18),
           ),
         ],
       ),
+      margin: EdgeInsets.all(30),
     );
   }
 }
